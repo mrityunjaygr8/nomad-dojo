@@ -72,7 +72,8 @@ resource "aws_instance" "main_instance" {
   vpc_security_group_ids = [aws_security_group.main_sg.id]
   subnet_id              = aws_subnet.main_subnet.id
   #   private_ip             = "10.0.0.10"
-  key_name = "test-pair-1"
+  key_name  = "test-pair-1"
+  user_data = templatefile("${path.module}/install.tmpl", {})
 }
 
 resource "aws_eip" "main_eip" {
