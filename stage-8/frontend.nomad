@@ -7,21 +7,22 @@ job "frontend" {
       driver = "docker"
       config {
         image = "thedojoseries/frontend"
+        ports = ["http"]
       }
+
 
       resources {
       }
     }
     scaling {
       enabled = true
-      min = 5
+      min = 2
       max = 10
       policy {
       }
     }
     network {
       port "http" {
-        static = 8080
       }
     }
   }
